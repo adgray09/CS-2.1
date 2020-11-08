@@ -1,5 +1,7 @@
 #!python
 
+import random
+
 
 def merge(items1, items2):
     """Merge given lists of items, each assumed to already be in sorted order,
@@ -21,6 +23,7 @@ def merge(items1, items2):
 
     result += items1[left_index:]
     result += items2[right_index:]
+    print(result)
     return result
 
     
@@ -69,6 +72,17 @@ def partition(items, low, high):
     # TODO: Move items less than pivot into front of range [low...p-1]
     # TODO: Move items greater than pivot into back of range [p+1...high]
     # TODO: Move pivot item into final position [p] and return index p
+    
+    i = (low-1)
+    pivot = items[high]
+    
+    for j in range(low, high):
+        if items[j] <= pivot:
+            i += 1
+    
+    items[i+1], items[high] = items[high], items[i+1]
+    
+    return (i+1)
 
 
 def quick_sort(items, low=None, high=None):
@@ -80,8 +94,17 @@ def quick_sort(items, low=None, high=None):
     # TODO: Check if high and low range bounds have default values (not given)
     # TODO: Check if list or range is so small it's already sorted (base case)
     # TODO: Partition items in-place around a pivot and get index of pivot
-    # TODO: Sort each sublist range by recursively calling quick sort
+    # TODO: Sort each sublist range by recursively calling quick sort  
+    
+    if low < high:
+        partition_index = partition(items, low, high)
+        quick_sort(items, low, partition_index-1)
+        quick_sort(items, partition_index+1, high)
+    return items
+
+
 
 items = [2,2,1,4,7,6]
+high = len(items)-1
 
-print(merge_sort(items))
+print(quick_sort(items, 0, high))
