@@ -59,17 +59,4 @@ items = [4,3,6,9,8,1,2]
 
 print(bucket_sort(items)) 
 
-def bucket_sort(numbesr, num_buckets=10):
-    max_value = max(numbers)
-    size = max_size/len(numbers)
-    result = []
-    bucket_list = []
-    
-    for i in range(num_buckets):
-        bucket_list.append([])
-        
-    for i in range(len(numbers)):
-        j = int(numbers[i]/size)
-        
-        if j != len(numbers):
-            bucket_list[j].append(numbers[i])          
+       

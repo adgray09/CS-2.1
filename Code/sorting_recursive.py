@@ -59,6 +59,7 @@ def merge_sort(items):
 
     return merge(left, right)
 
+# worst case O(n log n)
 
 def partition(items, low, high):
     """Return index `p` after in-place partitioning given items in range
@@ -85,6 +86,7 @@ def partition(items, low, high):
     return (i+1)
 
 
+
 def quick_sort(items, low=None, high=None):
     """Sort given items in place by partitioning items in range `[low...high]`
     around a pivot item and recursively sorting each remaining sublist range.
@@ -95,6 +97,8 @@ def quick_sort(items, low=None, high=None):
     # TODO: Check if list or range is so small it's already sorted (base case)
     # TODO: Partition items in-place around a pivot and get index of pivot
     # TODO: Sort each sublist range by recursively calling quick sort  
+    
+    # best case # worst case O(n log n)
     
     if low < high:
         partition_index = partition(items, low, high)
@@ -108,3 +112,4 @@ items = [2,2,1,4,7,6]
 high = len(items)-1
 
 print(quick_sort(items, 0, high))
+print(merge_sort(items))
