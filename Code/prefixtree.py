@@ -40,9 +40,11 @@ class PrefixTree:
 
     def contains(self, string):
         """Return True if this prefix tree contains the given string."""
-        # TODO
+        
         node = self.root
         for character in string:
+            # if that node has our child we set the node = to that node so we
+            # can continue down the Trie
             if node.has_child(character):
                 child_node = node.get_child(character)
                 node = child_node
